@@ -11,6 +11,7 @@ Tudo abaixo foi verificado em 24/11/2026. Se algo não bater, confira antes de i
 | Alternativa | `/Users/Shared/whisper-flow/.venv` (openai-whisper, sem modelo em cache — usar só se pedirem) |
 | Skills HyperFrames | `.claude/skills/hyperframes*`, `media-use` (instaladas no projeto) |
 | Skills Remotion | globais em `~/.agents/skills/remotion-*` (links em `~/.claude/skills/`), versão 4.0.547; motor alternativo, ver `remotion.md` |
+| claude-video-vision (revisão) | plugin v1.4.0, registrado em `~/.claude/settings.json` (`extraKnownMarketplaces`, tipo `directory`) apontando para a cópia já instalada em outro usuário deste Mac, sem duplicar arquivos. Config local em `~/.claude-video-vision/config.json` (whisper.cpp, `large-v3-turbo`, que é atalho para o modelo de `/Users/Shared/whisper-models`). Não use os backends Gemini/OpenAI sem pedir: enviariam o áudio para fora |
 | Design system da marca | `01_MARCA/MANUAL_IDENTIDADE_VISUAL_Dr-Victor_v1.0/` (tokens.css, fonts, assets/Logos) |
 
 ## Rodar o CLI do HyperFrames

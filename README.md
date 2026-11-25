@@ -12,7 +12,7 @@ Skill do Claude Code que edita os vídeos do Dr. Victor Hugo Espíndola Ala fala
 6. **Motions**: animações no HyperFrames com o design system da marca, ou no Remotion (vídeo inteiro ou só uma cena).
 7. **Efeitos sonoros**: whoosh, pop e clique, bem abaixo da voz.
 8. **Corte**: tira os silêncios e remapeia cenas e sons no novo tempo.
-9. **Revisão e exportação**: voz limpa e MP4 em 1080×1920, 30 fps, −14 LUFS.
+9. **Revisão e exportação**: voz limpa e MP4 em 1080×1920, 30 fps, −14 LUFS. Antes da entrega, o Claude assiste ao vídeo final com o plugin [claude-video-vision](https://github.com/jordanrendric/claude-video-vision) e confere sincronia, textos e enquadramento.
 
 ### Estilos
 

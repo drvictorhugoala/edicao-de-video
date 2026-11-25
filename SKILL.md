@@ -116,10 +116,22 @@ Exporte:
 npx hyperframes render -q delivery --sdr -f 30 -o videos/<slug>/07_export/render_hyperframes.mp4
 bash .claude/skills/edicao-de-video/scripts/finalizar_audio.sh videos/<slug>/07_export/render_hyperframes.mp4 videos/<slug>/07_export/<slug>_FINAL_9x16.mp4
 ```
-Saída: 1080×1920 (ou 1920×1080 se pedirem 16:9), 30 fps, H.264 SDR BT.709, −14 LUFS, pico ≤ −1 dBTP. Escreva `07_export/REVISAO.md` e abra o vídeo com `open`.
+Saída: 1080×1920 (ou 1920×1080 se pedirem 16:9), 30 fps, H.264 SDR BT.709, −14 LUFS, pico ≤ −1 dBTP.
+
+**Assista ao vídeo final antes de entregar** com o plugin `claude-video-vision` (ferramentas `video_info`, `video_watch` e `video_detail`, configurado para rodar local; ver `references/ambiente.md`):
+1. `video_info` no MP4 final: confira duração, 1080×1920 e presença de áudio.
+2. `video_watch` com `fps: "auto"` e `resolution: 768` para o vídeo inteiro (para vídeos acima de 2 min, segmentos com fps baixo nas falas e mais alto nas entradas de cena).
+3. Compare com o mapa das cenas e a transcrição:
+   - cada cartão entra junto da palavra que o dispara e sai antes do próximo;
+   - nenhum cartão cobre boca ou queixo; nada encosta na interface das redes;
+   - a transcrição do áudio final não perdeu palavras nos cortes, sem emenda estalando;
+   - o CTA final fica parado ≥ 4 s com a assinatura completa.
+4. Onde houver dúvida, `video_detail` no trecho com `resolution: 1024` para ler o texto da tela.
+
+Liste o que encontrou com o tempo (mm:ss) e corrija antes de entregar. Se o plugin não estiver disponível, faça a mesma conferência com quadros do `ffmpeg` e diga que a revisão foi por quadros soltos. Escreva `07_export/REVISAO.md` (inclua o resultado dessa conferência) e abra o vídeo com `open`.
 
 ## Ajustes depois da entrega
 
-"Refaça só aquele trecho": mude apenas a cena citada (na linha original + `remapear.py`), confira os quadros dela com `snapshot --at`, renderize e normalize de novo. Se a mudança for global (posição de todos os cartões, um texto que aparece em várias cenas), faça no gerador e diga que afeta o vídeo todo. Salve a nova versão como `_v2`, `_v3` — nunca sobrescreva a entrega anterior.
+"Refaça só aquele trecho": mude apenas a cena citada (na linha original + `remapear.py`), confira os quadros dela com `snapshot --at` (e, no render, `video_detail` só nesse trecho), renderize e normalize de novo. Se a mudança for global (posição de todos os cartões, um texto que aparece em várias cenas), faça no gerador e diga que afeta o vídeo todo. Salve a nova versão como `_v2`, `_v3` — nunca sobrescreva a entrega anterior.
 
 Arquivos intermediários grandes (renders sem normalização, versões antigas): ofereça apagar, não apague sozinho.
