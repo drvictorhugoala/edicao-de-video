@@ -1,6 +1,6 @@
 ---
 name: edicao-de-video
-description: Edita um vídeo do Dr. Victor Hugo falando para a câmera (Reels, Shorts, TikTok, YouTube) do arquivo bruto ao MP4 final — transcrição com tempo por palavra, mapa de cenas, escolha entre 6 estilos de edição (Clínico Sóbrio, Manchete com Fonte, Quadro Desenhado, Atlas em Corte, Dados em Frações, Artigo Destacado), motions no HyperFrames com o design system da marca, efeitos sonoros, corte de silêncios, SDR, −14 LUFS e ajustes por trecho. Use sempre que a pessoa mandar um vídeo/arquivo .mov/.mp4 dela falando, pedir para "editar", "montar", "cortar silêncios", "colocar animações/motions", "legendar", "exportar para Reels" ou "refazer um trecho" de um vídeo já editado, mesmo sem dizer "skill" ou "HyperFrames".
+description: Edita um vídeo do Dr. Victor Hugo falando para a câmera (Reels, Shorts, TikTok, YouTube) do arquivo bruto ao MP4 final — transcrição com tempo por palavra, mapa de cenas, escolha entre 6 estilos de edição (Clínico Sóbrio, Manchete com Fonte, Quadro Desenhado, Atlas em Corte, Dados em Frações, Artigo Destacado), motions no HyperFrames com o design system da marca, efeitos sonoros, corte de silêncios, SDR, −14 LUFS e ajustes por trecho. Motor padrão HyperFrames; Remotion como alternativa (vídeo inteiro ou cena de mapa/gráfico/Elements/legenda animada). Use sempre que a pessoa mandar um vídeo/arquivo .mov/.mp4 dela falando, pedir para "editar", "montar", "cortar silêncios", "colocar animações/motions", "legendar", "exportar para Reels" ou "refazer um trecho" de um vídeo já editado, mesmo sem dizer "skill" ou "HyperFrames".
 ---
 
 # Edição de vídeo — Dr. Victor Hugo
@@ -67,7 +67,13 @@ Escolha também o **layout** (padrão: sobreposição):
 - **Tela dividida** — vídeo na metade de cima, gráfico na de baixo, para cenas de muita informação.
 - **Inserção em tela cheia** — o gráfico cobre o vídeo por 3–6 s (a voz continua), para um desenho que precisa de espaço.
 
+E o **motor** (padrão: HyperFrames):
+- **HyperFrames** — o fluxo abaixo, com `remapear.py`.
+- **Remotion** — quando a pessoa pedir, ou quando o vídeo pedir Elements prontos, mapas, gráficos complexos ou legenda animada palavra a palavra. Pode ser o vídeo inteiro ou só uma cena dentro do HyperFrames. Leia `references/remotion.md` e pergunte antes de instalar (pacotes npm, navegador de render, licença).
+
 ## Etapa 5 — Criação dos motions (HyperFrames)
+
+Com o motor Remotion, siga `references/remotion.md` nesta etapa e na exportação; o resto do fluxo é igual.
 
 Antes de escrever composição, invoque a skill `/hyperframes` e siga o contrato dela. Depois:
 

@@ -10,6 +10,7 @@ Tudo abaixo foi verificado em 24/11/2026. Se algo não bater, confira antes de i
 | Modelo Whisper | `/Users/Shared/whisper-models/ggml-large-v3-turbo-q5_0.bin` (português bom; **não baixe outro**) |
 | Alternativa | `/Users/Shared/whisper-flow/.venv` (openai-whisper, sem modelo em cache — usar só se pedirem) |
 | Skills HyperFrames | `.claude/skills/hyperframes*`, `media-use` (instaladas no projeto) |
+| Skills Remotion | globais em `~/.agents/skills/remotion-*` (links em `~/.claude/skills/`), versão 4.0.547; motor alternativo, ver `remotion.md` |
 | Design system da marca | `01_MARCA/MANUAL_IDENTIDADE_VISUAL_Dr-Victor_v1.0/` (tokens.css, fonts, assets/Logos) |
 
 ## Rodar o CLI do HyperFrames
