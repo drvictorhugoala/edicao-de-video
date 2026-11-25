@@ -5,8 +5,8 @@ Uso: python3 remotion_dados.py videos/<slug> [--projeto 04_remotion]
 Escreve em <projeto>/src/dados/:
 - cortes.json   {fps, duracao, trechos: [{inicio, fim, saida}]}. O tempo.ts usa isso para levar um instante
                 da fala original para o vídeo cortado. Sem 06_montagem/cortes.json, o mapa é a identidade.
-- legendas.json Caption[] do @remotion/captions (ms, já no tempo do vídeo cortado). Palavras que caíram
-                inteiras num corte ficam de fora.
+- legendas.json Caption[] do @remotion/captions (ms, já no tempo do vídeo cortado). Palavras que o Whisper
+                marcou dentro de um corte são encaixadas no começo do trecho seguinte, sem sair da ordem.
 """
 import argparse
 import json
@@ -41,13 +41,18 @@ def build_segments(segments):
     return result
 
 
+MIN_WORD = 0.12  # duração mínima (s) de uma palavra empurrada para fora de um corte
+
+
 def build_captions(words, segments):
+    """O corte vem do áudio real (silencedetect); palavra que cai num corte é erro de tempo do Whisper
+    (comum no silêncio inicial). Em vez de sumir com ela, encaixa no começo do trecho seguinte, em ordem."""
     to_cut = make_mapper(segments)
-    captions = []
+    captions, previous_end = [], 0.0
     for word in words:
-        start, end = to_cut(word["start"]), to_cut(word["end"])
-        if end - start < 0.02:
-            continue
+        start = max(to_cut(word["start"]), previous_end)
+        end = max(to_cut(word["end"]), start + MIN_WORD)
+        previous_end = end
         captions.append({"text": " " + word["text"].strip(), "startMs": round(start * 1000),
                          "endMs": round(end * 1000), "timestampMs": round(start * 1000), "confidence": None})
     return captions
